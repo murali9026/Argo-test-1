@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-application
+  namespace: argocd
+spec:
+  project: default
+
+  # Source of the Kubernetes manifests
+  source:
+    repoURL: 'https://github.com/<your-git-username>/<your-repo-name>'
+    targetRevision: HEAD
+    path: manifests  # Path to the directory with Kubernetes manifests
+
+  # Destination cluster and namespace where the application should be deployed
+  destination:
+    server: https://kubernetes.default.svc  # URL for in-cluster Kubernetes API server
+    namespace: default  # Target namespace for deployment
+
+  # Sync policy
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
