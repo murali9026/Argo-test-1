@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: mk-app-container
-        image: dockerfile:latest
+        image: 8083-nexus-tecdmwng.ldapowner.opsera.io/test-repo-pari/mkdockertest12:latest12
         ports:
         - containerPort: 8080
 ---        
